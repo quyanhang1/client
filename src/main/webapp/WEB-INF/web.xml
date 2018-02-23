@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        id="WebApp_ID" version="2.5">
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!--解决中文乱码-->
+  <!--字符编码过滤器，spring中写好的过滤器，从全局控制字符编码-->
+  <filter>
+    <!--过滤器名称-->
+    <filter-name>SpringEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <!--配置过滤器初始化参数，指定参数的名字和值-->
+      <!--FilterConfig接口对象可以访问初始化参数-->
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <!--设置过滤器拦截的资源，servlet名称或者资源访问请求路径-->
+  <filter-mapping>
+    <filter-name>SpringEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--form提交put和delete-->
+  <!--<filter>-->
+    <!--<filter-name>HiddenHttpMethodFilter</filter-name>-->
+    <!--<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+  <!--<filter-name>HiddenHttpMethodFilter</filter-name>-->
+  <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
+
+  <!--前端控制器-->
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+
+
+
+  <!--获取spring配置文件-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:application.xml</param-value>
+  </context-param>
+
+  <!--加载spring配置文件-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.html</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.png</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.js</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.jpg</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.css</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.gif</url-pattern>-->
+  <!--</servlet-mapping>-->
+
+
+
+
+<!-- <jsp-config>
+    <taglib>
+      <taglib-uri>/tags</taglib-uri>
+      <taglib-location>/tld/datetag.tld</taglib-location>
+    </taglib>
+  </jsp-config>-->
+    <jsp-config>
+        <taglib>
+           <taglib-uri>http://www.atg.com/taglibs/json</taglib-uri>
+            <taglib-location>
+                /WEB-INF/json.tld
+            </taglib-location>
+        </taglib>
+    </jsp-config>
+
+
+  <!--过滤器执行顺序是按照web.xml的注册顺序执行的-->
+  <!--配置过滤器-->
+  <!--<filter>-->
+    <!--<filter-name>FilterTest</filter-name>-->
+    <!--<filter-class>com.jnshu.filter.FilterTest</filter-class>-->
+  <!--</filter>-->
+  <!--&lt;!&ndash;过滤器映射&ndash;&gt;-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>FilterTest</filter-name>-->
+    <!--&lt;!&ndash;拦截所有请求&ndash;&gt;-->
+    <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
+
+</web-app>

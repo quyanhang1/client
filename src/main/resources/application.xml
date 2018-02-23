@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:api.properties</value>
+                <!--要是有多个配置文件，只需在这里继续添加即可 -->
+            </list>
+        </property>
+    </bean>
+    <context:component-scan base-package="com.jnshu.utils"/>
+
+
+    <!--上传下载  -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="10485760000"/>
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
+
+
+    <bean name="headService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1021/head"/>
+        <!--<property name="serviceUrl" value="rmi://39.106.1.35:1021/head"/>-->
+        <property name="serviceInterface" value="com.jnshu.service.HeadService"/>
+    </bean>
+    <bean name="professionService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1021/profession"/>
+        <!--<property name="serviceUrl" value="rmi://39.106.1.35:1021/profession"/>-->
+        <property name="serviceInterface" value="com.jnshu.service.ProfessionService"/>
+    </bean>
+    <bean name="studentService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1021/student"/>
+        <!--<property name="serviceUrl" value="rmi://39.106.1.35:1021/student"/>-->
+        <property name="serviceInterface" value="com.jnshu.service.StudentService"/>
+    </bean>
+    <bean name="studyService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1021/study"/>
+        <!--<property name="serviceUrl" value="rmi://39.106.1.35:1021/study"/>-->
+        <property name="serviceInterface" value="com.jnshu.service.StudyService"/>
+    </bean>
+    <bean name="userService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1021/user"/>
+        <!--<property name="serviceUrl" value="rmi://39.106.1.35:1021/user"/>-->
+        <property name="serviceInterface" value="com.jnshu.service.UserService"/>
+    </bean>
+
+
+
+
+
+</beans>

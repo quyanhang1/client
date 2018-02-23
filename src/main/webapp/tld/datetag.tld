@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+    <tlib-version>1.1</tlib-version>
+    <!--标签前缀，相当于 c 标签的  c-->
+    <short-name>dateTag</short-name>
+    <tag>
+        <!--标签中的方法名，相当于<c:foreach>的foreach-->
+        <name>date</name>
+        <!--定义标签功能的类-->
+        <tag-class>com.jnshu.date.DateTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>value</name>
+            <required>true</required><!-- 说明movieList属性是必需的 -->
+            <rtexprvalue>true</rtexprvalue><!-- 说明movieList属性可以是一个运行时表达式（不用非得是一个常量String） -->
+        </attribute>
+        <attribute>
+            <name>pattern</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<!--定义布局-->
+<tiles-definitions>
+<!--定义模板-->
+    <definition name="t11" template="/WEB-INF/jsp/t11template.jsp">
+        <put-attribute name="title" value="修真院职业介绍"/>
+        <put-attribute name="header" value="/WEB-INF/jsp/head.jsp" />
+
+        <put-attribute name="body" value="/WEB-INF/jsp/t11body.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/foot.jsp" />
+    </definition>
+
+    <!--继承模板，只修改body部分-->
+    <definition name="t10" extends="t11">
+        <put-attribute name="title" value="修真院首页"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/t10body.jsp" />
+    </definition>
+
+<!--=========================================================================-->
+
+    <definition name="login" template="/WEB-INF/test/login.jsp"></definition>
+    <definition name="error" template="/WEB-INF/test/errorpage.jsp"></definition>
+    <definition name="registerok" template="/WEB-INF/test/registerok.jsp"></definition>
+    <definition name="errorpage2" template="/WEB-INF/test/errorpage2.jsp"></definition>
+    <definition name="register" template="/WEB-INF/test/register.jsp"></definition>
+    <definition name="register2" template="/WEB-INF/test/register2.jsp"></definition>
+    <definition name="goEmail" template="/WEB-INF/test/goEmail.jsp"></definition>
+    <definition name="loginok" template="/WEB-INF/test/loginok.jsp"></definition>
+    <definition name="errorEmail" template="/WEB-INF/test/errorEmail.jsp"></definition>
+
+
+
+
+
+
+
+
+</tiles-definitions>
